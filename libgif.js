@@ -31,6 +31,8 @@
 		loop_delay			Optional. The amount of time to pause (in ms) after each single loop (iteration).
 		draw_while_loading	Optional. Determines whether the gif will be drawn to the canvas whilst it is loaded.
 		show_progress_bar	Optional. Only applies when draw_while_loading is set to true.
+        loop_rubbing        Optional. when rubbing do we loop at start and end frames
+
 
 	Instance methods
 
@@ -463,6 +465,7 @@
         var overrideLoopMode = (options.hasOwnProperty('loop_mode') ? options.loop_mode : 'auto');
         var drawWhileLoading = (options.hasOwnProperty('draw_while_loading') ? options.draw_while_loading : true);
         var showProgressBar = drawWhileLoading ? (options.hasOwnProperty('show_progress_bar') ? options.show_progress_bar : true) : false;
+        var loopRubbing = (options.hasOwnProperty('loop_rubbing') ? options.loop_rubbing : true);
 
         var clear = function () {
             transparency = null;
@@ -725,11 +728,19 @@
                 i = parseInt(i, 10);
 
                 if (i > frames.length - 1){
-                    i = 0;
+                    if(loop_rubbing){
+                        i = 0;
+                    }else{
+                        i = frames.length-1;
+                    }
                 }
 
                 if (i < 0){
-                    i = 0;
+                    if (loop_rubbing){
+                        i = frames.length-1;
+                    }else {
+                        i = 0;
+                    }
                 }
 
                 tmpCanvas.getContext("2d").putImageData(frames[i].data, 0, 0);
