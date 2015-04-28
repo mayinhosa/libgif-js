@@ -728,7 +728,7 @@
                 i = parseInt(i, 10);
 
                 if (i > frames.length - 1){
-                    if(loop_rubbing){
+                    if(loopRubbing){
                         i = 0;
                     }else{
                         i = frames.length-1;
@@ -736,7 +736,7 @@
                 }
 
                 if (i < 0){
-                    if (loop_rubbing){
+                    if (loopRubbing){
                         i = frames.length-1;
                     }else {
                         i = 0;
