@@ -933,6 +933,9 @@
                 if (!initialized) init();
                 stream = new Stream(arr);
                 setTimeout(doParse, 0);
+            },
+            toggle_loop_rubbing: function(){
+                loopRubbing = ! loopRubbing;
             }
         };
     };
