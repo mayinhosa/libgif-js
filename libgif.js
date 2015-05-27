@@ -936,6 +936,10 @@
             },
             toggle_loop_rubbing: function(){
                 loopRubbing = ! loopRubbing;
+                return loopRubbing;
+            },
+            is_loop_rubbing: function(){
+                return loopRubbing;
             }
         };
     };
